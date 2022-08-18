@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: nginx-pv
+  namespace: nginx
+spec:
+  storageClassName: nginx-pv
+  accessModes:
+  - ReadWriteOnce
+  capacity:
+    storage: 3Gi
+  persistentVolumeReclaimPolicy: Retain
+  claimRef:
+    namespace: default
+    name: nginx-pv-claim 
+  hostPath:
+    path: /data/nginx-volume/
